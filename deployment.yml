@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: express
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: express
+    spec:     # pod spec                  
+      containers: 
+      - name: express 
+        image: gotassinari/express-microk8s
+        ports:
+        - containerPort: 3000
